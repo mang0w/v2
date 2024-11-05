@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #FF7BAC;
+  --primary-light: #FFE5EE;
+  --secondary: #FF97BE;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+:root[data-theme='dark'] {
+  --primary: #FF7BAC;
+  --primary-light: #331A24;
+  --secondary: #FF97BE;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.ice-cream-card {
+  @apply bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-md;
+}
+
+.nav-button {
+  @apply flex flex-col items-center text-gray-500 dark:text-gray-400 hover:text-primary transition-colors;
+}
+
+.nav-button.active {
+  @apply text-primary;
+}
+
+/* Styles pour Leaflet */
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 0.5rem;
+  z-index: 10;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.5rem;
+}
+
+.leaflet-popup-content {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* S'assurer que les contrôles de la carte restent sous la barre de navigation */
+.leaflet-control-container .leaflet-top,
+.leaflet-control-container .leaflet-bottom {
+  z-index: 40;
+}
+
+/* Animation pour le changement de niveau */
+@keyframes levelUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.level-up {
+  animation: levelUp 0.5s ease-in-out;
+}
